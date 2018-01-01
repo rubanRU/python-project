@@ -209,13 +209,54 @@ class account(customer,address):
     x9=au11[0]
     print("CUSTOMER STATE : ",x9)
     print("----------------------------------------------------")
+class modify():
+  def modif(self):
+    print("ENTER THE CUSTOMER ID")
+    jl=str(input())
+    print(" ")
+    print("ENTER THE ADDRESS ID")
+    km=str(input())
+    print(" ")
+    print("PLEASE CHOOSE NUMBER TO MODIFY")
+    print("1-PHONE NUMBER")
+    print("2-ADDRESS LINE")
+    print("3-CITY")
+    print("4-STATE")
+    vv=str(input())
+    con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
+    cur=con.cursor()
+    if vv=="1":
+      print("ENTER THE NEW PHONE NUMBER")
+      ph=str(input())
+      sql = "update cus set tpnoo='%s' where cuid='%s'" % (ph,jl)
+      cur.execute(sql)
+      con.commit()
+    elif vv=="2":
+      print("ENTER THE NEW ADDRESS LINE")
+      ph=str(input())
+      sql = "update address set addressline='%s' where addressid='%s'" % (ph,km)
+      cur.execute(sql)
+      con.commit()
+    elif vv=="3":
+      print("ENTER THE NEW CITY")
+      ph=str(input())
+      sql = "update address set city='%s' where addressid='%s'" % (ph,km)
+      cur.execute(sql)
+      con.commit()
+    elif vv=="4":
+      print("ENTER THE NEW ZIPCODE")
+      ph=int(input())
+      sql = "update address set zip='%d' where addressid='%s'" % (ph,km)
+      cur.execute(sql)
+      con.commit()
+    print("THANK YOU  YOUR MODIFICATIONS ARE DONE")
 class demo():
        while(1):
         print("..............................WELCOME TO EASY SHOP APPLICATION................")
         print("      ")
-        print("An exciting place for whole family to shop")
+        print("---------An exciting place for whole family to shop----------")
         print("      ")
-        print("Already have account YES/NO :")
+        print("Already have account yes/no :")
         j=str(input())
         print("    ")
         if j=="yes":
@@ -229,7 +270,14 @@ class demo():
           mm=customer()
           on=account()
           on.adde()
-          #on.cus()
+        print(" ")
+        print("DO YOU WANT TO ALTER THE YOUR DATABASE yes/no :")
+        hg=str(input())
+        if hg=="yes":
+          dd=modify()
+          dd.modif()
+        else:
+          print("THANK TOU")
           
         
       
