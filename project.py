@@ -5,11 +5,11 @@ class address(object):
   def details(self):
         print("......................ADDRESS DETAILS................................")
         print(" ")
-        print("ENTER THE ADDRESS ID:")
+        print("ENTER TO SET ADDRESS ID:")
         self.getaddressid()
   def getaddressid(self):
         self.id1=str(input())
-        print("ENTER THE ADDRESS LINE:")
+        print("ENTER THE  ADDRESS LINE:")
         self.getaddressline()
   def getaddressline(self):
         self.ad=str(input())
@@ -63,23 +63,26 @@ class customer(address):
            print("TO CHANGE YOUR ACCOUNT TO PREVILEGED BUY PRODUCT FOR RUPEES $",ssm)
            card="REGULAR"
         elif self.amo>1000 and self.amo<2000:
-           print("                          SILVER MEMBER SHIP CARD IS ALLOCATED                 ")
+           print("                ####SILVER MEMBER SHIP CARD IS ALLOCATED                 ")
            print("   ")
            print("-------------------YOU ARE ONE OF OUR PRIVILEGED CUSTOMER-------------------------")
+           print("  ")  
            print("ENTER ANY NUMBER FOR MEMBERSHIP CARD SHOULD HAVE 6 CHARACTERS MINIMUM")
            card="silver"
            #print("   ")
         elif self.amo>2000 and self.amo<5000:
-          print("                           GOLD MEMBER SHIP CARD IS ALLOCATED            ")
+          print("                 #### GOLD MEMBER SHIP CARD IS ALLOCATED            ")
           print("   ")
           print("-------------------YOU ARE ONE OF OUR PRIVILEGED CUSTOMER-------------------------")
+          print(" ")
           print("ENTER ANY NUMBER FOR MEMBERSHIP CARD SHOULD HAVE 6 CHARACTERS MINIMUM")
           card="gold"
           #print("   ")
         elif self.amo>5000:
-          print("                           PLATINUM MEMBER SHIP CARD IS ALLOCATED")
+          print("                 ####PLATINUM MEMBER SHIP CARD IS ALLOCATED")
           print("  ")
           print("-------------------YOU ARE ONE OF OUR PRIVILEGED CUSTOMER-------------------------")
+          print(" ")
           print("ENTER ANY NUMBER FOR MEMBERSHIP CARD SHOULD HAVE 6 CHARACTERS MINUMUM")
           card="platinum"
           #print("   ")
@@ -95,6 +98,7 @@ class account(customer,address):
   def aco(self):
     global val1
     global dis
+    global idn
     print("ENTER THE CUSTOMER ID")
     idn=str(input())
     con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
@@ -105,6 +109,7 @@ class account(customer,address):
     if valu is None:
       print("ID YOU ENTERED IS WRONG PLEASE ENTER THE VALID ID")
       vv=str(input())
+      idn=vv
       sql = "select amount from cus where cuid='%s'" % (vv)
       cur.execute(sql)
       valu1=cur.fetchone()
@@ -117,6 +122,7 @@ class account(customer,address):
        valu1=cur.fetchone()
        print("YOUR CURRENT BALANCE IS: ")
        print(valu1[0])
+       print(" ")
        sql = "select cardt from cus where cuid='%s'" % (idn)
        cur.execute(sql)
        au1=cur.fetchone()
@@ -125,8 +131,8 @@ class account(customer,address):
     sql = "select cardt from cus where cuid='%s'" % (idn)
     cur.execute(sql)
     au1=cur.fetchone()
-    ##print("YOUR MEMBER SHIP CARD BELONG TO ")
-    ##print(au1[0])
+    print("YOUR MEMBER SHIP CARD BELONG TO ")
+    print(au1[0])
     print(" ")
     print("ENTER ANY ITEM TO BUY :")
     bbb=str(input())
@@ -136,6 +142,7 @@ class account(customer,address):
     round(amoun1)
     if amoun1<2499:
       val1=amoun1
+      dis=0
     elif amoun1>2500 and amoun1<5000:
       dis=(2/100)*amoun1
       val=amoun1-dis
@@ -275,13 +282,13 @@ class demo():
        while(1):
         print("..............................WELCOME TO EASY SHOP APPLICATION................")
         print("      ")
-        print("---------An exciting place for whole family to shop----------")
+        print("--------#############An exciting place for whole family to shop##############--")
         print("      ")
         print("Already have account yes/no :")
         j=str(input())
         print("    ")
         if j=="yes":
-          print(" ..............................LOGIN................................")
+          print(" ..............................LOGIN WITH YOUR ACCOUNT ...............................")
           print(" ")
           mm=account()
           mm.aco()
