@@ -37,7 +37,7 @@ class customer(address):
         addi=id2
         print("...........................CUSTOMER DETAILS..........................................")
         print(" ")
-        print("ENTER THE CUSTOMER ID")
+        print("ENTER TO SET CUSTOMER ID")
         self.getcustid()
     def getcustid(self):
         self.cusid=str(input())
@@ -56,21 +56,30 @@ class customer(address):
         self.ite=str(input())
         print("ENTER THE AMOUNT TO BUY :")
         self.amo=int(input())
-        if self.amo>1000 and self.amo<2000:
+        if self.amo<1000:
+           print(".................YOU ARE REGULAR CUSTOMER................")
+           print(" ")
+           ssm=1000-self.amo
+           print("TO CHANGE YOUR ACCOUNT TO PREVILEGED BUY PRODUCT FOR RUPEES $",ssm)
+           card="REGULAR"
+        elif self.amo>1000 and self.amo<2000:
            print("                          SILVER MEMBER SHIP CARD IS ALLOCATED                 ")
            print("   ")
+           print("-------------------YOU ARE ONE OF OUR PRIVILEGED CUSTOMER-------------------------")
            print("ENTER ANY NUMBER FOR MEMBERSHIP CARD SHOULD HAVE 6 CHARACTERS MINIMUM")
            card="silver"
            #print("   ")
         elif self.amo>2000 and self.amo<5000:
           print("                           GOLD MEMBER SHIP CARD IS ALLOCATED            ")
           print("   ")
+          print("-------------------YOU ARE ONE OF OUR PRIVILEGED CUSTOMER-------------------------")
           print("ENTER ANY NUMBER FOR MEMBERSHIP CARD SHOULD HAVE 6 CHARACTERS MINIMUM")
           card="gold"
           #print("   ")
         elif self.amo>5000:
           print("                           PLATINUM MEMBER SHIP CARD IS ALLOCATED")
           print("  ")
+          print("-------------------YOU ARE ONE OF OUR PRIVILEGED CUSTOMER-------------------------")
           print("ENTER ANY NUMBER FOR MEMBERSHIP CARD SHOULD HAVE 6 CHARACTERS MINUMUM")
           card="platinum"
           #print("   ")
@@ -124,7 +133,9 @@ class account(customer,address):
     amoun=str(input())
     amoun1=int(valu1[0])+int(amoun)
     round(amoun1)
-    if amoun1>2500 and amoun1<5000:
+    if amoun1<1000:
+      val1=amoun1
+    elif amoun1>2500 and amoun1<5000:
       dis=(2/100)*amoun1
       val=amoun1-dis
       val1=val
@@ -141,6 +152,10 @@ class account(customer,address):
     sql = "update cus set amount='%s' where cuid='%s'" % (round(val1),idn)
     cur.execute(sql)
     con.commit()
+    if val1<1000:
+      print("YOU ARE REGULAR CUSTOMER")
+      card11="REGULAR"
+      dis=0
     if val1>1000 and val1<2000:
       print("YOUR CARD IS CHANGED TO SILVER")
       print(" ")
