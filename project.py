@@ -94,6 +94,7 @@ class customer(address):
 class account(customer,address):
   def aco(self):
     global val1
+    global dis
     print("ENTER THE CUSTOMER ID")
     idn=str(input())
     con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
@@ -133,7 +134,7 @@ class account(customer,address):
     amoun=str(input())
     amoun1=int(valu1[0])+int(amoun)
     round(amoun1)
-    if amoun1<1000:
+    if amoun1<2499:
       val1=amoun1
     elif amoun1>2500 and amoun1<5000:
       dis=(2/100)*amoun1
