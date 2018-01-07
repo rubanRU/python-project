@@ -1,0 +1,132 @@
+import random
+from mysql.connector import(connection)
+
+class account(object):
+    
+    def create(self):
+        print("Enter the account number")
+        accno=str(input())
+        cnx = connection.MySQLConnection(user='root', password='Charkris1',
+                                 host='localhost',
+                                    database='sys')
+
+        cus=cnx.cursor()
+        sql="select fname from account where cusaccountno ='%s'" % (accno)
+        cus.execute(sql)
+        cnx.commit()
+        val1=cur.fetchone()
+        print("YOUR FIRST NAME IS:")
+        print(val1)
+
+         
+        print("Enter Password")
+        pas=str(input())
+        sql="select lname from account where cuspassword ='%s'" % (pas)
+        cus.execute(sql)
+        val2=cur.fetchone()
+        print("YOUR LAST NAME")
+        print(val2)
+class customer(account):
+    
+    def name(self):
+        print("Enter the customer first name")
+        self.fname=str(input())
+        self.lastname()
+
+    def lastname(self):
+        print("Enter the customer last name")
+        self.lname=str(input())  
+        self.cusaddress()
+    def cusaddress(self):
+        print("Enter the customer address")
+        self.cusaddress=str(input())
+        self.cuspincode()
+
+    def cuspincode(self):
+        print("Enter the customer pincode")
+        self.cuspincode=str(input())
+        self.cuscity()
+
+    def cuscity(self):
+        print("Enter the customer city")
+        self.cuscity=str(input())
+        self.cusstate()
+
+    def cusstate(self):
+        print("Enter the customer state") 
+        self.cusstate=str(input())
+        self.cusid()
+
+    def cusid(self):
+        print("YOUR CUSTOMER ID IS ")
+        
+        self.cusid= random.randint(1000000,2000000)
+        print(self.cusid)
+        self.cuspassword()
+    def cuspassword(self):
+        print("Enter your Password")
+        self.cuspassword=str(input())
+        self.cusaccountno()
+    def cusaccountno(self):
+        print("YOUR account number")
+        self.cusaccountno=random.randint(1000000,2000000)
+        print(self.cusaccountno)
+        cnx = connection.MySQLConnection(user='root', password='Charkris1',
+                                 host='localhost',
+                                    database='sys')
+
+        cus=cnx.cursor()
+        sql="insert into account VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (self.fname,self.lname,self.cusaddress,self.cuspincode,self.cuscity,self.cusstate,self.cusid,self.cuspassword,self.cusaccountno)
+        cus.execute(sql)
+        cnx.commit()
+        cnx.close()
+class login():
+    while(1):
+        print("................WELCOME TO BANK OF BARODA...............")
+        print("   ")
+        print("Already have account yes/no:")
+        j=str(input())
+        print("   ")
+        if(j=="yes"):
+            print(".....................login with your account.................")
+            print(" ")
+            aa=account()
+            aa.create()
+        else:
+            print(" CREATE ACCOUNT ")
+            mm=customer()
+            mm.name()
+
+
+
+
+
+
+
+
+
+error:
+...............WELCOME TO BANK OF BARODA...............
+   
+Already have account yes/no:
+yes
+   
+.....................login with your account.................
+ 
+Enter the account number
+1351476
+Traceback (most recent call last):
+  File "/Users/krishnakrish/Desktop/account.py", line 83, in <module>
+    class login():
+  File "/Users/krishnakrish/Desktop/account.py", line 94, in login
+    aa.create()
+  File "/Users/krishnakrish/Desktop/account.py", line 15, in create
+    cus.execute(sql)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/cursor.py", line 561, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/connection.py", line 514, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/connection.py", line 416, in _handle_result
+    raise errors.get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'cusaccountno' in 'where clause'
+>>> 
