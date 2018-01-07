@@ -31,17 +31,17 @@ class account(object):
         yy=str(input())
         if yy=="1":
             print(" ")
-            print("YOUR ACCOUNT NUMBER IS--")
+            print("YOUR ACCOUNT NUMBER IS :")
             val=random.randint(11111111,55555555)
             print(val)
             print(" ")
-            print("YOUR CUSTOMER ID IS------")
+            print("YOUR CUSTOMER ID IS  :")
             val1=random.randint(11111111,55555555)
             print(val1)
             amo=1000
             typ="CURRENT"
             print(" ")
-            print("SET PASSWORD FOR YOUR ACCOUNT!!!")
+            print("SET PASSWORD FOR YOUR ACCOUNT!!!!!!!!!")
             pas=str(input())
             con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
             cur=con.cursor()
@@ -49,20 +49,20 @@ class account(object):
             cur.execute(sql)
             con.commit()
             print(" ")
-            print("#######YOUR ACCOUNT CREATION IS DONE SUCESSFULLY---")
+            print("#################YOUR ACCOUNT CREATION IS DONE SUCESSFULLY###############")
         elif yy=="2":
             print(" ")
-            print("YOUR ACCOUNT NUMBER IS--")
+            print("YOUR ACCOUNT NUMBER IS :")
             val=random.randint(11111111,55555555)
             print(val)
             print(" ")
-            print("YOUR CUSTOMER ID IS------")
+            print("YOUR CUSTOMER ID IS :")
             val1=random.randint(11111111,55555555)
             print(val1)
             amo=5000
             typ="SAVINGS"
             print(" ")
-            print("SET PASSWORD FOR YOUR ACCOUNT!!!")
+            print("SET PASSWORD FOR YOUR ACCOUNT!!!!!!!")
             pas=str(input())
             con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
             cur=con.cursor()
@@ -73,7 +73,7 @@ class account(object):
             print("#######YOUR ACCOUNT CREATION IS DONE SUCESSFULLY---")
         else:
             print(" ")
-            print("--ACCOUNT CREATION IS NOT DONE")
+            print("########ACCOUNT CREATION IS NOT DONE")
 class creat(account):
     def logi(self):
         global acv
@@ -86,7 +86,7 @@ class creat(account):
         global aoo
         global jjz
         print(" ")
-        print("ENTER YOUR ACCOUNT NUMBER-----------")
+        print("ENTER YOUR ACCOUNT NUMBER :")
         acv=str(input())
         con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
         cur=con.cursor()
@@ -95,7 +95,7 @@ class creat(account):
         valu=cur.fetchone()
         if valu is None:
             print(" ")
-            print("ACCOUNT NO YOU ENTERED IS WRONG PLEASE ENTER THE VALID NUMBER")
+            print("ACCOUNT NO YOU ENTERED IS WRONG PLEASE ENTER THE VALID NUMBER!!!!!!!!!!")
             vv=str(input())
             acv=vv
             sql = "select amo from acco where accno='%s'" % (vv)
@@ -118,15 +118,15 @@ class creat(account):
         print("YOUR ACCCOUNT TYPE IS ")
         print(va1[0])
         print("")
-        print("ENTER YOUR CHOICE ")
-        print("1-update balance")
-        print("2-money transfer")
-        print("3-money withdrawal")
-        print("4-Apply for the loan")
+        print("@@@ENTER YOUR CHOICE@@@@ ")
+        print("1-update balance----")
+        print("2-money transfer-----")
+        print("3-money withdrawal----")
+        print("4-Apply for the loan----")
         kl=str(input())
         if kl=="1":
             print("")
-            print("ENTER THE AMOUNT TO UPDATE")
+            print("ENTER THE AMOUNT TO UPDATE :")
             al=str(input())
             sql = "select amo from acco where accno='%s'" % (acv)
             cur.execute(sql)
@@ -138,8 +138,8 @@ class creat(account):
             cur.execute(sql)
             con.commit()
             print("")
-            print(" your amount is updated sucessfully------------")
-            print()
+            print("---YOUR AMOUNT IS UPDATED SUCESSFULLY--------------")
+            print("")
             print("YOUR CURRENT BALANCE IS $ : ",ff1)
         elif kl=="2":
             print("")
@@ -150,22 +150,28 @@ class creat(account):
             vq=cur.fetchone()
             oo=vq[0]
             if iz==oo:
-                print("PLEASE ENTER THE ACCOUNT NUMBER TO TRANSFER")
+                print("")
+                print("PLEASE ENTER THE ACCOUNT NUMBER TO TRANSFER :")
                 rr=str(input())
             else:
+                print("")
                 print("PLEASE ENTER THE CORRECT PASSWORD!!!!!!!!!!!!")
                 ff=str(input())
-                print("PLEASE ENTER THE ACCOUNT NUMBER TO TRANSFER")
+                print("")
+                print("PLEASE ENTER THE ACCOUNT NUMBER TO TRANSFER :")
                 rr=str(input())
             sql = "select accno from acco where accno='%s'" % (rr)
             cur.execute(sql)
             vql=cur.fetchone()
             if vql is None:
+                print("")
                 print("PLEASE ENTER THE VALID ACCOUNT NUMBER!!!!!!")
                 rr=str(input())
+                print("")
                 print("ENTER THE AMOUNT TO TRANSFER")
                 az=str(input())
             else:
+                print("")
                 print("ENTER THE AMOUNT TO TRANSFER")
                 az=str(input())
             print("")
@@ -184,7 +190,7 @@ class creat(account):
                 aoo=5000
             print("")
             if llp<=aoo:
-                print("YOU HAVE MINIMUM BALANCE AMOUNT TRANSFER IS NOT POSSIBLE")
+                print("!!!!!!YOU HAVE MINIMUM BALANCE AMOUNT TRANSFER IS NOT POSSIBLE!!!!!!!!")
             else:
                  sql = "update acco set amo='%s' where accno='%s'" % (llp,acv)
                  cur.execute(sql)
@@ -197,22 +203,25 @@ class creat(account):
                  sql = "update acco set amo='%s' where accno='%s'" % (kkm,rr)
                  cur.execute(sql)
                  con.commit()
-                 print("MONEY TRANSFER IS DONE SUCESSFULLY-----")
+                 print("")
+                 print("############MONEY TRANSFER IS DONE SUCESSFULLY-----")
         elif kl=="3":
             print("")
-            print("PLEASE ENTER THE PASSWORD OF YOUR ACCOUNT")
+            print("PLEASE ENTER THE PASSWORD OF YOUR ACCOUNT :")
             iz=str(input())
             sql = "select password from acco where accno='%s'" % (acv)
             cur.execute(sql)
             vq=cur.fetchone()
             oo=vq[0]
             if iz==oo:
-                print("PLEASE ENTER AMOUNT TO WITHDRAWAL")
+                print("")
+                print("PLEASE ENTER AMOUNT TO WITHDRAWAL :")
                 rr=str(input())
             else:
+                print("")
                 print("PLEASE ENTER THE CORRECT PASSWORD!!!!!!!!!!!!")
                 ff=str(input())
-                print("PLEASE ENTER THE AMOUNT TO WITHDRAWAL")
+                print("PLEASE ENTER THE AMOUNT TO WITHDRAWAL------")
                 rr=str(input())
             sql = "select amo from acco where accno='%s'" % (acv)
             cur.execute(sql)
@@ -265,6 +274,7 @@ class fix(account):
         print("")
         print("ARE YOU INTEREST IN FIXED DEPOSIT yes/no");
         vza=str(input())
+        print("")
         print("ENTER THE CUSTOMER ID")
         zz=str(input())
         if vza=="yes":
@@ -276,15 +286,15 @@ class fix(account):
              vq=cur.fetchone()
              if vq is None:
                  print(" ")
-                 print("CUSTOMER ID YOU ENTERED IS WRONG PLEASE ENTER THE VALID ID")
+                 print("CUSTOMER ID YOU ENTERED IS WRONG PLEASE ENTER THE VALID ID!!!!!!!!!!1")
                  vv=str(input())
                  zz=vv
                  print("")
-                 print("ENTER THE INITIAL AMOUNT TO DEPOSIT")
+                 print("ENTER THE INITIAL AMOUNT TO DEPOSIT :")
                  jjz=str(input())
              else:
                  print("")
-                 print("ENTER THE INITIAL AMOUNT TO DEPOSIT")
+                 print("ENTER THE INITIAL AMOUNT TO DEPOSIT :")
                  jjz=str(input())
              con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
              cur=con.cursor()
@@ -292,9 +302,10 @@ class fix(account):
              cur.execute(sql)
              gb=cur.fetchone()
              nb=gb[0]
-             print("your balance in savings account is : ",nb);
+             print("")
+             print("YOUR BALANCE IN SAVINGS ACCOUNT IS : ",nb);
              print(" ")
-             print("YOUR FIXED DEPOSIT ACCOUNT  NUMBER IS ")
+             print("YOUR FIXED DEPOSIT ACCOUNT  NUMBER IS : ")
              vc=random.randint(11111111,55555555)
              print(vc)
              aqv=int(jjz)+int(nb)
@@ -307,14 +318,14 @@ class fix(account):
              qw=(6/100)*aqv
              pz=aqv-qw
              print(" ")
-             print("YOUR INTEREST AMOUNT PER ANNUM IS" , qw)
+             print("YOUR INTEREST AMOUNT PER ANNUM IS :" , qw)
              con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
              cur=con.cursor()
              sql = "insert into fixe values('%s','%s','%s')" %(zz,vc,aqv)
              cur.execute(sql)
              con.commit()
         else:
-            print("---THANK YOU")
+            print("##############THANK YOU#####################")
         print(" ")
         print("WANT TO ALTER DATABASE ???? yes/no")
         xc=str(input())
@@ -326,7 +337,7 @@ class fix(account):
             qpp=str(input())
             if qpp=="1":
                 print("")
-                print("ENTER YOUR NEW ADDRESS")
+                print("ENTER YOUR NEW ADDRESS :")
                 a1=str(input())
                 con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
                 cur=con.cursor()
@@ -337,7 +348,7 @@ class fix(account):
                 print("YOUR MODIFICATIONS ARE DONE SUCESSFULLY-----")
             elif qpp=="2":
                 print("")
-                print("ENTER YOUR NEW CITY")
+                print("ENTER YOUR NEW CITY :")
                 a1=str(input())
                 con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
                 cur=con.cursor()
@@ -348,7 +359,7 @@ class fix(account):
                 print("YOUR MODIFICATIONS ARE DONE SUCESSFULLY-----")
             elif qpp=="3":
                 print("")
-                print("ENTER YOUR NEW STATE")
+                print("ENTER YOUR NEW STATE :")
                 a1=str(input())
                 con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
                 cur=con.cursor()
@@ -359,7 +370,7 @@ class fix(account):
                 print("YOUR MODIFICATIONS ARE DONE SUCESSFULLY-----")
             elif qpp=="4":
                 print("")
-                print("ENTER YOUR NEW PINCODE")
+                print("ENTER YOUR NEW PINCODE :")
                 a1=str(input())
                 con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
                 cur=con.cursor()
@@ -429,9 +440,9 @@ class fix(account):
 class demo(account,creat,fix):
     while(1):
         print("")
-        print("----------------WELCOME TO BANK OF  BARODA----------------------")
+        print("----------------####WELCOME TO BANK OF  BARODA######----------------------")
         print(" ")
-        print("-----****INDIA'S INTERNATIONAL BANK*******-----------")
+        print("-----********INDIA'S INTERNATIONAL BANK*************-----------")
         print(" ")
         print("**********ALREADY HAVE ACCOUNT yes/no")
         d=str(input())
@@ -448,17 +459,18 @@ class demo(account,creat,fix):
             print("!!!!!!!!!ACCOUNT CREATION----------------")
             n1=account()
             n1.acc()
-        print("DO YOU WANT TO CLOSE YOUR ACCOUNT")
+        print("DO YOU WANT TO CLOSE YOUR ACCOUNT!!!!! yes/no")
         fg=str(input())
         if fg=="yes":
             print(" ")
             print("ENTER THE ACOUNT NUMBER")
             az=str(input())
-            print("ENTER THR PASSWORD")
+            print("")
+            print("ENTER THR PASSWORD !!!!!!!!!!")
             azz=str(input())
             print("YOUR ACCOUNT IS DELETED SHORTLY-------")
         else:
             print("")
-            print("THANK YOU VISIT AGAIN")
+            print("##############THANK YOU VISIT AGAIN###############################")
 
         
