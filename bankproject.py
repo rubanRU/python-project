@@ -420,6 +420,12 @@ class fix(account):
             cur.execute(sql)
             au9=cur.fetchone()
             x9=au9[0]
+            print("CUSTOMER ACCOUNT TYPE IS: ",x9)
+            sql = "select amo from acco where cusid='%s'" % (zz)
+            cur.execute(sql)
+            au10=cur.fetchone()
+            x10=au10[0]
+            print("AMOUNT IN YOUR ACCOUNT  IS: ",x10)
 class demo(account,creat,fix):
     while(1):
         print("")
