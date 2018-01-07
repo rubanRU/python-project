@@ -265,12 +265,12 @@ class fix(account):
         print("")
         print("ARE YOU INTEREST IN FIXED DEPOSIT yes/no");
         vza=str(input())
+        print("ENTER THE CUSTOMER ID")
+        zz=str(input())
         if vza=="yes":
              print("")
-             print("PLEASE ENTER YOUR CUSTOMER ID")
-             zz=str(input())
              con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
-             cur=con.cursor()
+             cur=con.cursor()   
              sql = "select cusid from acco where cusid='%s'" % (zz)
              cur.execute(sql)
              vq=cur.fetchone()
@@ -278,6 +278,7 @@ class fix(account):
                  print(" ")
                  print("CUSTOMER ID YOU ENTERED IS WRONG PLEASE ENTER THE VALID ID")
                  vv=str(input())
+                 zz=vv
                  print("")
                  print("ENTER THE INITIAL AMOUNT TO DEPOSIT")
                  jjz=str(input())
@@ -378,6 +379,8 @@ class fix(account):
             print("------------------------------------------------------")
             print("---------------CUSTOMER DETAILS------------------------")
             print("-------------------------------------------------------")
+            con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
+            cur=con.cursor()
             sql = "select fname from acco where cusid='%s'" % (zz)
             cur.execute(sql)
             au2=cur.fetchone()
@@ -417,17 +420,6 @@ class fix(account):
             cur.execute(sql)
             au9=cur.fetchone()
             x9=au9[0]
-            print("ACCOUNT TYPE :",x6)
-            sql = "select lno from loan where accno='%s'" % (x7)
-            cur.execute(sql)
-            au11=cur.fetchone()
-            x11=au11[0]
-            print("CURRENT LOAN ACCOUNT NUMBER :",x11)
-            sql = "select amlo from loan where accno='%s'" % (x7)
-            cur.execute(sql)
-            au12=cur.fetchone()
-            x12=au12[0]
-            print("CURRENT LOAN AMOUNT IS:",x12)
 class demo(account,creat,fix):
     while(1):
         print("")
