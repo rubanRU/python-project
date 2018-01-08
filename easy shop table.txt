@@ -1,0 +1,23 @@
+        EASY SHOP APPLICATION
+
+TABLE CREATION 
+
+TABLE 1:
+
+create table address(
+addressid varchar(17) primary key,
+addressline varchar(17),
+city varchar(15),
+zip varchar(15),
+state varchar(20));
+
+TABLE 2:
+
+create table cus(
+cuid varchar(15),
+cusname varchar(20),
+tpnoo varchar(15),
+memid varchar(15),
+amount varchar(11),
+cardt varchar(15),
+addressid varchar(17) references address));
