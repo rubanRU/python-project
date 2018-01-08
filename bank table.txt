@@ -1,0 +1,33 @@
+         BANK PROJECT
+   
+
+TABLE CREATION 
+
+TABLE 1
+
+create acco(
+fname varchar(15),
+lname varchar(15),
+address varchar(25),
+city varchar(15),
+state varchar(15),
+pincode varchar(15),
+accno varchar(15) primary key,
+cusid varchar(19),
+amo varchar(15),
+actyp varchar(20),
+password varchar(15));
+
+TABLE 2
+
+create table loan(
+accno varchar(15) references acco,
+lno varchar(15),
+amlo varchar(15));
+
+TABLE 3
+
+create table fixe(
+cusid varchar(15),
+fixid varchar(15),
+fixam varchar(15));
