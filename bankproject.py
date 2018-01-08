@@ -26,8 +26,8 @@ class account(object):
         self.d6=int(input())
         print(" ")
         print("ENTER YOUR ACCOUNT TYPE --")
-        print("1-Savings")
-        print("2-current")
+        print("1-Current")
+        print("2-Savings")
         yy=str(input())
         if yy=="1":
             print(" ")
@@ -459,6 +459,7 @@ class demo(account,creat,fix):
             print("!!!!!!!!!ACCOUNT CREATION----------------")
             n1=account()
             n1.acc()
+        print("")
         print("DO YOU WANT TO CLOSE YOUR ACCOUNT!!!!! yes/no")
         fg=str(input())
         if fg=="yes":
