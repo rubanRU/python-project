@@ -438,6 +438,7 @@ class fix(account):
             x10=au10[0]
             print("AMOUNT IN YOUR ACCOUNT  IS: ",x10)
 class demo(account,creat,fix):
+    global az
     while(1):
         print("")
         print("----------------####WELCOME TO BANK OF  BARODA######----------------------")
@@ -466,14 +467,26 @@ class demo(account,creat,fix):
             print(" ")
             print("ENTER THE ACOUNT NUMBER")
             az=str(input())
-            print("")
-            print("ENTER THR PASSWORD !!!!!!!!!!")
-            azz=str(input())
             con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
             cur=con.cursor()
-            sql="delete from acco where password='%s'"  % (azz)
+            while(1):
+                con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
+                cur=con.cursor()
+                print("")
+                print("ENTER THE PASSWORD")
+                az=str(input())
+                sql="select accno from acco where password='%s'" % (az)
+                cur.execute(sql)
+                qqq=cur.fetchone()
+                if qqq is None:
+                    print("")
+                    print("PLEASE ENTER CORRECT PASSWORD  !!!!!")
+                else:
+                    break
+            sql="delete from acco where password='%s'"  % (az)
             cur.execute(sql)
             con.commit()
+            print("")
             print("YOUR ACCOUNT IS DELETED SUCESSFULLY-----------")
         else:
             print("")
