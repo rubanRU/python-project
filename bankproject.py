@@ -469,7 +469,12 @@ class demo(account,creat,fix):
             print("")
             print("ENTER THR PASSWORD !!!!!!!!!!")
             azz=str(input())
-            print("YOUR ACCOUNT IS DELETED SHORTLY-------")
+            con=cx_Oracle.connect("ruban/ruban@127.0.0.1/XE")
+            cur=con.cursor()
+            sql="delete from acco where password='%s'"  % (azz)
+            cur.execute(sql)
+            con.commit()
+            print("YOUR ACCOUNT IS DELETED SUCESSFULLY-----------")
         else:
             print("")
             print("##############THANK YOU VISIT AGAIN###############################")
